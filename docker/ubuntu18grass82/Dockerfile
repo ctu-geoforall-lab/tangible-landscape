@@ -3,7 +3,7 @@ FROM ubuntu:${UBUNTU_VERSION}
 
 ENV LIBK4_VERSION=1.4.1
 ENV ARCH=amd64
-ENV NUMCORES=18
+ENV CPU_NR=8
 ENV PCL_VERSION=1.11.1
 ENV XERCES_VERSION=3.2.3
 ENV LIBGEOTIFF_VERSION=1.7.1
@@ -40,7 +40,7 @@ RUN git clone https://github.com/microsoft/Azure-Kinect-Sensor-SDK.git
 RUN cd Azure-Kinect-Sensor-SDK && mkdir build && cd build && cmake ..
 RUN cd Azure-Kinect-Sensor-SDK && \
 	cd build && \
-	make -j$NUMCORES
+	make -j$CPU_NR
 RUN cd Azure-Kinect-Sensor-SDK && \
 	cd build && \
 	make install
@@ -61,7 +61,7 @@ RUN cd /tmp/src/pcl && \
 	mkdir build && \
 	cd build && \
 	cmake -DCMAKE_BUILD_TYPE=Release .. && \
-    	make -j$NUMCORES && \
+    	make -j$CPU_NR && \
     	make install
 
 # install Blender and download BlenderGIS addon
@@ -193,7 +193,7 @@ RUN cd /tmp/src/grass-${GRASS_VERSION} && \
 		--without-odbc \
 		--without-openmp \
 		--without-ffmpeg && \
-	make -j$NUMCORES && \
+	make -j$CPU_NR && \
 	make install
 
 # install Tangible Python dependencies
