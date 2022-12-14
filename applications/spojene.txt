@@ -1,0 +1,64 @@
+{
+  "tasks": [
+      {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.vect",
+          "map=walkcost"
+        ],
+        [
+          "d.rast",
+          "map=walkcost"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "walk.py",
+      "instructions": "Zobrazeni nejlepsi oblasti kudy jit",
+      "title": "Ztracene dite"
+    },
+      {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.rast",
+          "map=spojnice"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "rytir.py",
+      "instructions": "Nejmene namahava spojnice dvou bodu s pouzitim Knight's move",
+      "title": "Rytir"
+    },
+     {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.vect",
+          "map=drain_path"
+        ],
+        [
+          "d.rast",
+          "map=drain_path"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "watershed.py",
+      "instructions": "Zobrazeni odtoku vody",
+      "title": "Odtok"
+    }
+  ]
+}
+
