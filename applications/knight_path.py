@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+############################################################################
+#
+# AUTHOR(S):    Lucie Antosova, Katerina Boudova, Barbora Dvorakova,
+#               Martina Kulikova
+#               Ondrej Pesek
+############################################################################
+
 from grass.pygrass.modules import Module
 
 
