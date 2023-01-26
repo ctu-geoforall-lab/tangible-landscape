@@ -17,9 +17,9 @@
       ],
       "base": "dem",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "walk.py",
-      "instructions": "Zobrazeni nejlepsi oblasti kudy jit",
-      "title": "Ztracene dite"
+      "analyses": "distances.py",
+      "instructions": "Visualise distance regions",
+      "title": "Distance regions"
     },
       {
       "layers": [
@@ -29,14 +29,14 @@
         ],
         [
           "d.rast",
-          "map=spojnice"
+          "map=path"
         ]
       ],
       "base": "dem",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "rytir.py",
-      "instructions": "Nejmene namahava spojnice dvou bodu s pouzitim Knight's move",
-      "title": "Rytir"
+      "analyses": "knight_path.py",
+      "instructions": "Visualise the least-cost path connecting two points, using knight's move",
+      "title": "Least-cost path"
     },
      {
       "layers": [
@@ -55,9 +55,9 @@
       ],
       "base": "dem",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "watershed.py",
-      "instructions": "Zobrazeni odtoku vody",
-      "title": "Odtok"
+      "analyses": "drainage_path.py",
+      "instructions": "Visualise drainage path from a point",
+      "title": "Drainage path"
     }
   ]
 }
