@@ -1,0 +1,64 @@
+{
+  "tasks": [
+      {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.vect",
+          "map=walkcost"
+        ],
+        [
+          "d.rast",
+          "map=walkcost"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "distances.py",
+      "instructions": "Visualise distance regions",
+      "title": "Distance regions"
+    },
+      {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.rast",
+          "map=path"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "knight_path.py",
+      "instructions": "Visualise the least-cost path connecting two points, using knight's move",
+      "title": "Least-cost path"
+    },
+     {
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.vect",
+          "map=drain_path"
+        ],
+        [
+          "d.rast",
+          "map=drain_path"
+        ]
+      ],
+      "base": "dem",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "analyses": "drainage_path.py",
+      "instructions": "Visualise drainage path from a point",
+      "title": "Drainage path"
+    }
+  ]
+}
+
