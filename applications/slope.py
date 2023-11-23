@@ -9,14 +9,15 @@
 import os
 
 from grass.pygrass.modules import Module
-from grass.pygrass.raster.abstract import Info
 
 os.environ['GRASS_OVERWRITE'] = '1'
 os.environ['GRASS_VERBOSE'] = '0'
 
 
-def run_contours(real_elev, scanned_elev, env, **kwargs):
+def run_slope(real_elev, scanned_elev, env, **kwargs):
     Module("g.region", raster=scanned_elev)
+
+    Module("r.slope.aspect", elevation=scanned_elev, slope="slope")
 
     # get optimal interval for contours
     info = Info(scanned_elev)
@@ -24,14 +25,6 @@ def run_contours(real_elev, scanned_elev, env, **kwargs):
     interval = (info.max - info.min) / 20
     # alternatively set fixed interval
     # interval = 10
-
-    Module(
-        "r.contour",
-        flags="t",
-        input=scanned_elev,
-        output="contours_main",
-        step=interval * 5,
-    )
 
     Module(
         "r.contour",

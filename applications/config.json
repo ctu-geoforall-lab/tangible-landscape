@@ -84,6 +84,23 @@
       ],
       "base": "dem",
       "analyses": "contours.py"
+    },
+    {
+      "title": "Slope",
+      "instructions": "Visualize slope in degrees",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "layers": [
+        [
+          "d.rast",
+          "map=slope"
+        ],
+        [
+          "d.vect",
+          "map=contours"
+        ]
+      ],
+      "base": "dem",
+      "analyses": "slope.py"
     }
   ]
 }
