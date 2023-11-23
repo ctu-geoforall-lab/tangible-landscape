@@ -11,31 +11,27 @@ from grass.pygrass.modules import Module
 
 
 def run_drainage_path(real_elev, scanned_elev, env, **kwargs):
-    Module("g.region", flags="p", raster=scanned_elev)
+    Module("g.region", raster=scanned_elev)
+    cur_region = Region()
+    start_point_coords = (
+        cur_region.west + (cur_region.east - cur_region.west) / 2,
+        (cur_region.north + cur_region.south) / 2
+    )
+
 
     Module(
         "r.watershed",
         elevation=scanned_elev,
-        accumulation="accum",
         drainage="drain_dir",
-        overwrite=True,
-    )
-
-    Module(
-        "r.mapcalc",
-        expression="drain_deg = if(drain_dir != 0, 45. * abs(drain_dir), null())",
+        quiet=True,
         overwrite=True,
     )
 
     Module(
         "r.path",
-        input="drain_deg",
-        raster_path="drain_path",
+        input="drain_dir",
         vector_path="drain_path",
-        start_coordinates=(635184, 226127),
+        start_coordinates=start_point_coords,
+        quiet=True,
         overwrite=True,
     )
-
-    Module("r.colors", map=scanned_elev, color="elevation", overwrite=True)
-
-    Module("r.relief", input=scanned_elev, output="relief", overwrite=True)
