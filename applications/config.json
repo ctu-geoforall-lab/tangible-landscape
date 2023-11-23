@@ -1,6 +1,6 @@
 {
   "tasks": [
-      {
+    {
       "title": "Distance regions",
       "instructions": "Visualise distance regions",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
@@ -25,7 +25,7 @@
       "base": "dem",
       "analyses": "distance_regions.py"
     },
-      {
+    {
       "title": "Least-cost path",
       "instructions": "Visualise the least-cost path connecting two points, using knight's move",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
@@ -44,7 +44,7 @@
       "base": "dem",
       "analyses": "knight_path.py"
     },
-     {
+    {
       "title": "Drainage path",
       "instructions": "Visualise drainage path from a point",
       "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
@@ -62,6 +62,28 @@
       ],
       "base": "dem",
       "analyses": "drainage_path.py"
+    },
+    {
+      "title": "Contours",
+      "instructions": "Visualize contours with contour interval depending on scanned elevation range",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "layers": [
+        [
+          "d.rast",
+          "map=scan"
+        ],
+        [
+          "d.vect",
+          "map=contours_main",
+          "width=2"
+        ],
+        [
+          "d.vect",
+          "map=contours"
+        ]
+      ],
+      "base": "dem",
+      "analyses": "contours.py"
     }
   ]
 }

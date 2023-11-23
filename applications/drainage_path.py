@@ -8,6 +8,7 @@
 ############################################################################
 
 from grass.pygrass.modules import Module
+from grass.pygrass.gis.region import Region
 
 
 def run_drainage_path(real_elev, scanned_elev, env, **kwargs):

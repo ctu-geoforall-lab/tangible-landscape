@@ -51,11 +51,10 @@ def run_distance_regions(real_elev, scanned_elev, env, **kwargs):
         elevation=scanned_elev,
         friction="friction",
         output="walkcost",
-        # outdir="direction",
         start_coordinates=start_point_coords,
         max_cost=10000,
-        overwrite=True,
         quiet=True,
+        overwrite=True,
         lambda_=0.5
     )
 
