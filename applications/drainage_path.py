@@ -24,7 +24,6 @@ def run_drainage_path(real_elev, scanned_elev, env, **kwargs):
         (cur_region.north + cur_region.south) / 2
     )
 
-
     Module(
         "r.watershed",
         elevation=scanned_elev,

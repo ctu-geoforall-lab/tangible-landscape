@@ -118,6 +118,32 @@
       ],
       "base": "dem",
       "analyses": "aspect.py"
+    },
+    {
+      "title": "Terrain forms",
+      "instructions": "Visualize geomorphons (terrain forms)",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "layers": [
+        [
+          "d.rast",
+          "map=geomorphon"
+        ],
+        [
+          "d.vect",
+          "map=contours"
+        ],
+        [
+          "d.vect",
+          "map=peaks",
+	  "color=0:0:0:255",
+	  "fill_color=229:229:229",
+	  "width=1",
+          "icon=basic/triangle",
+	  "size=20"
+        ]
+      ],
+      "base": "dem",
+      "analyses": "geomorphons.py"
     }
   ]
 }
