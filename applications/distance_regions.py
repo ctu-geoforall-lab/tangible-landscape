@@ -12,8 +12,9 @@ from grass.pygrass.gis.region import Region
 
 
 def run_distance_regions(real_elev, scanned_elev, env, **kwargs):
+    Module("g.region", raster=scanned_elev)
     cur_region = Region()
-    center_coords = (
+    start_point_coords = (
         cur_region.west + (cur_region.east - cur_region.west) * 2 / 3,
         (cur_region.north + cur_region.south) / 2
     )
@@ -31,15 +32,15 @@ def run_distance_regions(real_elev, scanned_elev, env, **kwargs):
         output="friction",
         rules="-",
         stdin_=characteristics,
+        quiet=True,
         overwrite=True,
-        quiet=True
     )
 
     Module(
         "v.in.ascii",
         input="-",
         output="start_point",
-        stdin_=f"{center_coords[0]}|{center_coords[1]}",
+        stdin_=f"{start_point_coords[0]}|{start_point_coords[1]}",
         quiet=True,
         overwrite=True,
     )
@@ -51,7 +52,7 @@ def run_distance_regions(real_elev, scanned_elev, env, **kwargs):
         friction="friction",
         output="walkcost",
         # outdir="direction",
-        start_coordinates=center_coords,
+        start_coordinates=start_point_coords,
         max_cost=10000,
         overwrite=True,
         quiet=True,

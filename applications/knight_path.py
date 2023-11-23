@@ -8,13 +8,22 @@
 ############################################################################
 
 from grass.pygrass.modules import Module
+from grass.pygrass.gis.region import Region
 
 
 def run_knight_path(real_elev, scanned_elev, env, **kwargs):
-    # set the computational region
-    Module("g.region", raster="elevation")
+    Module("g.region", raster=scanned_elev)
+    cur_region = Region()
+    start_point_coords = (
+        cur_region.west + (cur_region.east - cur_region.west) * 3 / 4,
+        cur_region.south + (cur_region.north - cur_region.south) * 3 / 4
+    )
+    end_point_coords = (
+        cur_region.west + (cur_region.east - cur_region.west) * 1 / 4,
+        cur_region.south + (cur_region.north - cur_region.south) * 1 / 4
+    )
 
-    charakteristika = """
+    characteristics = """
     1:3:1:1
     4:5:1:1
     6:6:1:1
@@ -25,7 +34,8 @@ def run_knight_path(real_elev, scanned_elev, env, **kwargs):
         input="landclass96",
         output="friction",
         rules="-",
-        stdin_=charakteristika,
+        stdin_=characteristics,
+        quiet=True,
         overwrite=True,
     )
 
@@ -34,17 +44,18 @@ def run_knight_path(real_elev, scanned_elev, env, **kwargs):
         flags="bk",
         elevation=scanned_elev,
         friction="friction",
-        output="path",
+        output="costs",
         outdir="smer",
-        start_coordinates=(634935.9292929292, 220446.1085858586),
+        start_coordinates=start_point_coords,
+        quiet=True,
         overwrite=True,
     )
 
     Module(
         "r.path",
         input="smer",
-        start_coordinates=(637498.2424242424, 218050.57323232322),
-        raster_path="path",
+        start_coordinates=end_point_coords,
         vector_path="path",
+        quiet=True,
         overwrite=True,
     )

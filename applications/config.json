@@ -35,8 +35,10 @@
           "map=scan"
         ],
         [
-          "d.rast",
-          "map=path"
+          "d.vect",
+          "map=path",
+          "width=5",
+          "color=200:0:0"
         ]
       ],
       "base": "dem",
