@@ -1,27 +1,34 @@
 {
   "tasks": [
       {
+      "title": "Distance regions",
+      "instructions": "Visualise distance regions",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
       "layers": [
         [
           "d.rast",
-          "map=scan"
+          "map=walkcost"
         ],
         [
           "d.vect",
-          "map=walkcost"
+          "map=walkcost_borders",
+	  "color=200:0:0"
         ],
         [
-          "d.rast",
-          "map=walkcost"
+          "d.vect",
+          "map=start_point",
+	  "icon=basic/star",
+	  "size=30",
+	  "fill_color=200:0:0"
         ]
       ],
       "base": "dem",
-      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "distances.py",
-      "instructions": "Visualise distance regions",
-      "title": "Distance regions"
+      "analyses": "distance_regions.py"
     },
       {
+      "title": "Least-cost path",
+      "instructions": "Visualise the least-cost path connecting two points, using knight's move",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
       "layers": [
         [
           "d.rast",
@@ -33,12 +40,12 @@
         ]
       ],
       "base": "dem",
-      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "knight_path.py",
-      "instructions": "Visualise the least-cost path connecting two points, using knight's move",
-      "title": "Least-cost path"
+      "analyses": "knight_path.py"
     },
      {
+      "title": "Drainage path",
+      "instructions": "Visualise drainage path from a point",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
       "layers": [
         [
           "d.rast",
@@ -54,10 +61,7 @@
         ]
       ],
       "base": "dem",
-      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
-      "analyses": "drainage_path.py",
-      "instructions": "Visualise drainage path from a point",
-      "title": "Drainage path"
+      "analyses": "drainage_path.py"
     }
   ]
 }
