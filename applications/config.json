@@ -101,6 +101,23 @@
       ],
       "base": "dem",
       "analyses": "slope.py"
+    },
+    {
+      "title": "Aspect",
+      "instructions": "Visualize aspect in degrees",
+      "scanning_params": {"smooth": 10, "numscans": 1, "interpolate": true},
+      "layers": [
+        [
+          "d.rast",
+          "map=aspect"
+        ],
+        [
+          "d.vect",
+          "map=contours"
+        ]
+      ],
+      "base": "dem",
+      "analyses": "aspect.py"
     }
   ]
 }
