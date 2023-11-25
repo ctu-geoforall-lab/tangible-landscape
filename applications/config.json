@@ -57,7 +57,7 @@
           "d.vect",
           "map=drain_path",
           "width=5",
-          "color=200:0:0"
+          "color=0:0:250"
         ]
       ],
       "base": "dem",
