@@ -50,6 +50,7 @@ def run_knight_path(real_elev, scanned_elev, env, **kwargs):
         output="costs",
         outdir="smer",
         start_coordinates=start_point_coords,
+        walk_coeff=(0.72,12.0,1.9998,-1.9998)
     )
 
     Module(
