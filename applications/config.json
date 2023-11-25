@@ -144,6 +144,30 @@
       ],
       "base": "dem",
       "analyses": "geomorphons.py"
+    },
+    {
+      "layers": [
+        [
+          "d.rast",
+          "map=depth"
+        ],
+        [
+          "d.rast",
+          "map=ponds"
+        ],
+        [
+          "d.vect",
+          "map=contours",
+	  "width=3",
+	  "color=200:0:0"
+        ]
+      ],
+      "base": "dem",
+      "layers_opacity": [1.0, 1.0, 0.5],
+      "scanning_params": {"smooth": 12, "numscans": 1, "zexag": 1, "interpolate": true},
+      "analyses": "water.py",
+      "instructions": "Visualize waterflow and ponding.",
+      "title": "Waterflow and ponding"
     }
   ]
 }
