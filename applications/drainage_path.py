@@ -20,8 +20,8 @@ def run_drainage_path(real_elev, scanned_elev, env, **kwargs):
     Module("g.region", raster=scanned_elev)
     cur_region = Region()
     start_point_coords = (
-        cur_region.west + (cur_region.east - cur_region.west) / 2,
-        (cur_region.north + cur_region.south) / 2
+        cur_region.west + (cur_region.east - cur_region.west) * 2 / 3,
+        cur_region.south + (cur_region.north - cur_region.south) * 2 / 3
     )
 
     Module(
